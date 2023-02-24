@@ -28,6 +28,14 @@ app.get('/', (req, res) => {
   res.sendFile('/public/html/home.html', { root: __dirname });
 });
 
+app.get('/projects', (req, res) => {
+  res.sendFile('/public/html/projects.html', { root: __dirname });
+});
+
+app.get('/projectdtl', (req, res) => {
+  res.sendFile('/public/html/projectDtl.html', { root: __dirname });
+});
+
 app.get('/downloadcv', (req, res) => {
   res.sendFile('/public/docs/myResume.pdf', { root: __dirname });
 });

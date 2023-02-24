@@ -13,6 +13,7 @@ require('dotenv').config();
 // ------------------ model ------------------
 const Exp = require('../model/experience');
 const Skill = require('../model/skills');
+const Project = require('../model/projects');
 // const { json } = require('body-parser');
 
 const currentUrl = 'http://localhost:5000';
@@ -88,6 +89,28 @@ app.get('/skills', (req, res) => {
     Skill.getAllSkills((err, result) => {
         if (!err) {
             res.status(200).send(result);
+        } else {
+            console.log(err);
+        }
+    });
+});
+
+app.get('/projects', (req, res) => {
+    Project.getAllProjects((err, result) => {
+        if (!err) {
+            res.status(200).send(result);
+        } else {
+            console.log(err);
+        }
+    });
+});
+
+app.get('/project/:id', (req, res) => {
+    const projId = req.params.id;
+
+    Project.getProject(projId, (err, result) => {
+        if (!err) {
+            res.status(200).send(result[0]);
         } else {
             console.log(err);
         }

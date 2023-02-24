@@ -12,7 +12,6 @@ const Experience = {
   //= ======================================================
   //              Features / Class
   //= ======================================================
-  // get all class of services
   getAllExp(callback) {
     // sql query statement
     const sql = 'SELECT * FROM heroku_ac264b924247888.csy_experiences;';
@@ -28,7 +27,6 @@ const Experience = {
       return callback(null, result); // if
     });
   },
-  // get class of service by id
   getAExp(id, callback) {
     // sql query statement
     const sql = 'SELECT * FROM heroku_ac264b924247888.csy_experiences where EXP_ID=?;';

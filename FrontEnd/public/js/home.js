@@ -51,7 +51,7 @@ function createModalBar(info) {
 
 function getAllExp() {
     $.ajax({
-        url: `http://localhost:5000/exps`,
+        url: `${serverName}/exps`,
         type: 'GET',
         contentType: 'application/json; charset=utf-8',
 
@@ -108,7 +108,7 @@ function getAllExp() {
 
 function getAExp(expId) {
     $.ajax({
-        url: `http://localhost:5000/exp/${expId}`,
+        url: `${serverName}/exp/${expId}`,
         type: 'GET',
         contentType: 'application/json; charset=utf-8',
 
@@ -144,7 +144,7 @@ function getAExp(expId) {
 
 function getSkills(type) {
     $.ajax({
-        url: `http://localhost:5000/skills`,
+        url: `${serverName}/skills`,
         type: 'GET',
         contentType: 'application/json; charset=utf-8',
 
@@ -163,7 +163,7 @@ function getSkills(type) {
                             skillPerc: skill.SKILL_PERC,
                             skillType: skill.SKILL_TYPE
                         }
-        
+
                         const newBar = createBar(skillObj);
                         $('#skillsBody').append(newBar);
                     }
@@ -171,7 +171,7 @@ function getSkills(type) {
             } else {
                 for (let i = 0; i < data.length; i++) {
                     const skill = data[i];
-    
+
                     const skillObj = {
                         skillID: skill.SKILL_ID,
                         skillName: skill.SKILL_NAME,
@@ -179,7 +179,7 @@ function getSkills(type) {
                         skillPerc: skill.SKILL_PERC,
                         skillType: skill.SKILL_TYPE
                     }
-    
+
                     const newModalBar = createModalBar(skillObj);
                     $('#modalSkillsBody').append(newModalBar);
                 }
