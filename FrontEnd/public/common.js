@@ -1,1 +1,0 @@
-const serverName = 'http://localhost:5000';
