@@ -281,4 +281,5 @@ $(document).ready(function () {
 
     getAllExp();
     getSkills('top');
+    getProjects();
 });
