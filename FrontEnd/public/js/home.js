@@ -51,7 +51,7 @@ function createModalBar(info) {
 
 function createProjCard(info) {
     const projCard = `
-        <div class="card" onclick="window.open('/projectdtl?id=${info.projID}', '_blank');>
+        <div class="card" onclick="window.open('/projectdtl?id=${info.projID}', '_blank');">
             <div class="box">
                 <i class="fas fa-paint-brush"></i>
                 <div class="text">${info.projLabel}</div>
