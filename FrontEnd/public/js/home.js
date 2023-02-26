@@ -59,6 +59,7 @@ function createProjCard(info) {
             </div>
         </div>
     `;
+    
     return projCard;
 }
 
