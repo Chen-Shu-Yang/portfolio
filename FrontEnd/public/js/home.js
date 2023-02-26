@@ -49,6 +49,20 @@ function createModalBar(info) {
     return ModalBar;
 }
 
+function createProjCard(info) {
+    const projCard = `
+        <div class="card" onclick="window.open('/projectdtl?id=${info.projID}', '_blank');>
+            <div class="box">
+                <i class="fas fa-paint-brush"></i>
+                <div class="text">${info.projLabel}</div>
+                <p>${info.projDes}</p>
+            </div>
+        </div>
+    `;
+
+    return projCard;
+}
+
 function getAllExp() {
     $.ajax({
         url: `${serverName}/exps`,
@@ -196,6 +210,29 @@ function getSkills(type) {
 
             console.log(xhr.responseText);
             console.log(xhr.status);
+        },
+    });
+}
+
+function getProjects() {
+    $.ajax({
+        url: `${serverName}/projects`,
+        type: 'GET',
+        contentType: 'application/json; charset=utf-8',
+
+        success(data) {
+            for (let i = 0; i < 3; i++) {
+                const proj = data[i];
+
+                const projObj = {
+                    projID: proj.PROJECT_ID,
+                    projLabel: proj.PROJECT_LABEL,
+                    projDes: proj.PROJECT_DES,
+                }
+
+                const newCard = createProjCard(projObj);
+                $('#projBody').append(newCard);
+            }
         },
     });
 }
