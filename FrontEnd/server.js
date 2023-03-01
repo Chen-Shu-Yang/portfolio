@@ -1,6 +1,7 @@
 const express = require('express');
 // eslint-disable-next-line import/no-extraneous-dependencies
 const serveStatic = require('serve-static');
+const enforce = require('express-sslify');
 
 // set hostname and portnumber
 const hostname = '0.0.0.0';
@@ -8,12 +9,8 @@ const port = process.env.PORT || 3001;
 
 const app = express();
 
+app.use(enforce.HTTPS({ trustAzureHeader: true }));
 app.use((req, res, next) => {
-  console.log(req.url);
-  console.log(req.method);
-  console.log(req.path);
-  console.log(req.query.id);
-
   if (req.method !== 'GET') {
     res.type('.html');
     const msg = '<html><body>This server only serves web pages with GET!</body></html>';
