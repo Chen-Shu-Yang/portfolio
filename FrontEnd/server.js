@@ -9,7 +9,7 @@ const port = process.env.PORT || 3001;
 
 const app = express();
 
-app.use(enforce.HTTPS({ trustAzureHeader: true }));
+app.use(enforce.HTTPS({ trustProtoHeader: true }));
 app.use((req, res, next) => {
   if (req.method !== 'GET') {
     res.type('.html');
