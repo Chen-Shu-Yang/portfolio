@@ -1,6 +1,7 @@
 const express = require('express');
 // eslint-disable-next-line import/no-extraneous-dependencies
 const serveStatic = require('serve-static');
+const enforce = require('express-sslify');
 
 // set hostname and portnumber
 const hostname = '0.0.0.0';
@@ -8,6 +9,7 @@ const port = process.env.PORT || 3001;
 
 const app = express();
 
+app.use(enforce.HTTPS({ trustProtoHeader: true }));
 app.use((req, res, next) => {
   console.log(req.url);
   console.log(req.method);
